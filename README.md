@@ -119,3 +119,9 @@ SalNet Controller is designed exclusively for legitimate system administration, 
 *For research and educational purposes only. Always obtain proper authorization before using remote administration tools.*
 
 **© ZeroTrace - All rights reserved**
+
+
+
+https://github.com/user-attachments/assets/40e7d8ae-49d2-499d-8dd5-dd209a660270
+
+
