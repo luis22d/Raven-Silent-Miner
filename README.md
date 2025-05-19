@@ -14,6 +14,8 @@ Salnet RAT
 
 CONTACT : https://t.me/ZeroTraceD3V
 
+60$ - Month
+
 
 *Developed by ZeroTrace*
 
