@@ -12,7 +12,7 @@ Salnet RAT
 
 ## Advanced Remote Administration Tool
 
-CONTACT : https://t.me/ZeroTraceOfficial
+CONTACT : https://t.me/ZeroTraceDevOfficial
 
 60$ - Month
 
