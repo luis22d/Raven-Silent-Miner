@@ -4,6 +4,8 @@ This Project Has Been Changed, Updated.
 
 Update : 1.0.7601
 ![1](https://github.com/user-attachments/assets/4da5fb38-e8cd-4ef3-89ee-9aa0972492da)
+![image](https://github.com/user-attachments/assets/828ecc24-8f84-4c3e-975e-bbe690c29f96)
+![image](https://github.com/user-attachments/assets/024d4e76-c346-465b-973b-a510337172b0)
 ![image](https://github.com/user-attachments/assets/a42bc181-cea9-4541-86d0-7c6610f66ee1)
 ![image](https://github.com/user-attachments/assets/7806b3a6-202e-4935-af58-c254f60fc952)
 ![image](https://github.com/user-attachments/assets/fea76969-9b57-4b63-903a-12bc49398bdf)
@@ -11,7 +13,7 @@ Update : 1.0.7601
 
 # ZapCore 
 
-## Advanced Remote Administration Tool
+## Advanced Remote Administration Tool Zapcore 
 
 CONTACT : https://t.me/ZeroTraceDevOfficial
 
@@ -19,6 +21,7 @@ CONTACT : https://t.me/ZeroTraceDevOfficial
 
 
 *Developed by ZeroTrace*
+C# WPF
 
 ## Overview
 
