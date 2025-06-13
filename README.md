@@ -98,12 +98,12 @@ ZapCore RAT is a powerful, feature-rich remote administration tool designed for 
 
 ## Technical Specifications
 
-- **Framework**: .NET Framework
+- **Framework**: .NET CORE
 - **Connectivity**: TCP/IP Sockets
 - **Compatibility**: Windows 7/8/10/11
 - **Encoding**: UTF-8 with custom packet structure
 - **Architecture Support**: x86 and x64 systems
-- **Requirements**: Microsoft .NET Framework 4.5+
+- **Requirements**: Microsoft .NET CORE 8.0+
 
 ## Interface Preview
 
