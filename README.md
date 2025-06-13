@@ -1,15 +1,15 @@
-# Salnet-Controll
-Salnet RAT
+# ZapCore
+ZapCore RAT
 # This Project Has Been Moved And Changed, Updated.
 
-![Salford   Co](https://github.com/user-attachments/assets/f8e82acf-08c3-42a3-b52e-c74e985e16d8)
+Update : 1.0.7601
+![1](https://github.com/user-attachments/assets/4da5fb38-e8cd-4ef3-89ee-9aa0972492da)
+![image](https://github.com/user-attachments/assets/a42bc181-cea9-4541-86d0-7c6610f66ee1)
+![image](https://github.com/user-attachments/assets/7806b3a6-202e-4935-af58-c254f60fc952)
+![image](https://github.com/user-attachments/assets/fea76969-9b57-4b63-903a-12bc49398bdf)
 
 
-![image](https://github.com/user-attachments/assets/2eb8d5ed-4464-4d12-b8c1-00b2a3999a60)
-![image](https://github.com/user-attachments/assets/d32aa694-8171-4e49-981e-380c9d45a537)
-![image](https://github.com/user-attachments/assets/4742cbbd-bd8f-4204-bf12-fb572d1d9b34)
-
-# SalNet Controller
+# ZapCore 
 
 ## Advanced Remote Administration Tool
 
@@ -22,7 +22,7 @@ CONTACT : https://t.me/ZeroTraceDevOfficial
 
 ## Overview
 
-SalNet Controller is a powerful, feature-rich remote administration tool designed for seamless system control through encrypted socket connections. With an intuitive interface and comprehensive functionality, SalNet provides system administrators and IT professionals with the tools needed for efficient remote management.
+ZapCore RAT is a powerful, feature-rich remote administration tool designed for seamless system control through encrypted socket connections. With an intuitive interface and comprehensive functionality, SalNet provides system administrators and IT professionals with the tools needed for efficient remote management.
 
 ## Key Features
 
@@ -104,7 +104,7 @@ SalNet Controller is a powerful, feature-rich remote administration tool designe
 
 ## Interface Preview
 
-The SalNet Controller provides an elegant, intuitive interface with dark-themed styling for reduced eye strain during extended use sessions. Main components include:
+The ZapCore  provides an elegant, intuitive interface with dark-themed styling for reduced eye strain during extended use sessions. Main components include:
 
 - Client Overview Panel: Displays all connected systems with essential information
 - Feature Selection Sidebar: Quick access to all available tools
@@ -113,7 +113,7 @@ The SalNet Controller provides an elegant, intuitive interface with dark-themed 
 
 ## Security Notice
 
-SalNet Controller is designed exclusively for legitimate system administration, authorized remote assistance, and educational purposes. Users are responsible for ensuring they have proper authorization before connecting to any system. Unauthorized access to computer systems is illegal and unethical.
+ZapCore is designed exclusively for legitimate system administration, authorized remote assistance, and educational purposes. Users are responsible for ensuring they have proper authorization before connecting to any system. Unauthorized access to computer systems is illegal and unethical.
 
 ---
 
