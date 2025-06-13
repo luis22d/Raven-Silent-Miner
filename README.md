@@ -21,7 +21,7 @@ CONTACT : https://t.me/ZeroTraceDevOfficial
 
 
 *Developed by ZeroTrace*
-C# WPF
+*Coded In : C# WPF *
 
 ## Overview
 
