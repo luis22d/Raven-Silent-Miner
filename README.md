@@ -25,7 +25,7 @@ CONTACT : https://t.me/ZeroTraceDevOfficial
 
 ## Overview
 
-ZapCore RAT is a powerful, feature-rich remote administration tool designed for seamless system control through encrypted socket connections. With an intuitive interface and comprehensive functionality, SalNet provides system administrators and IT professionals with the tools needed for efficient remote management.
+ZapCore RAT is a powerful, feature-rich remote administration tool designed for seamless system control through encrypted socket connections. With an intuitive interface and comprehensive functionality, ZapCore provides system administrators and IT professionals with the tools needed for efficient remote management.
 
 ## Key Features
 
