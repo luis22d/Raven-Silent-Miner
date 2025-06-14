@@ -1,6 +1,7 @@
 # ZapCore
 ZapCore RAT
-This Project Has Been Changed, Updated.
+
+![zapcore-logo](https://github.com/user-attachments/assets/a7e31d8c-ec81-4015-bd79-549a827a498b)
 
 Update : 1.0.7601
 ![1](https://github.com/user-attachments/assets/4da5fb38-e8cd-4ef3-89ee-9aa0972492da)
