@@ -2,7 +2,7 @@
 ZapCore RAT
 
 
-Update : 1.0.7601
+Update : 1.0.7603
 ![1](https://github.com/user-attachments/assets/4da5fb38-e8cd-4ef3-89ee-9aa0972492da)
 ![image](https://github.com/user-attachments/assets/828ecc24-8f84-4c3e-975e-bbe690c29f96)
 ![image](https://github.com/user-attachments/assets/024d4e76-c346-465b-973b-a510337172b0)
@@ -17,7 +17,7 @@ Update : 1.0.7601
 
 CONTACT : https://t.me/ZeroTraceDevOfficial
 
-60$ - Month
+
 
 
 *Developed by ZeroTrace*
