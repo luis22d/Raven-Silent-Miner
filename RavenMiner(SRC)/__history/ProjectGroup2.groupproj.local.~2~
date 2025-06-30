@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/04/27 00:11:15.000.295,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\ProjectGroup2.groupproj=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\ProjectGroup2.groupproj</Transaction>
+    <Transaction>2025/04/27 01:24:57.000.097,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\ProjectGroup2.groupproj=C:\Users\steffz\Desktop\RavenLoader\RavenLoader (SRC)\ProjectGroup2.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="C:\Users\steffz\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj"/>
+	</Default.Personality>
+</BorlandProject>

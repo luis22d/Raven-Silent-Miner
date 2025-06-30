@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/04/13 18:12:28.000.863,=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/04/13 20:10:47.000.222,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2025/04/26 22:03:10.000.796,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Main.pas</Transaction>
+    <Transaction>2025/04/26 22:03:10.000.796,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Main.dfm</Transaction>
+    <Transaction>2025/04/26 22:03:18.000.893,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj</Transaction>
+    <Transaction>2025/04/26 22:45:37.000.433,=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/04/26 22:45:41.000.665,=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\UClient.pas</Transaction>
+    <Transaction>2025/04/26 22:55:29.000.777,=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2025/04/26 22:55:36.000.445,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit3.dfm=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\notification.dfm</Transaction>
+    <Transaction>2025/04/26 22:55:36.000.445,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Unit3.pas=C:\Users\steffz\Documents\Embarcadero\Studio\Projects\notification.pas</Transaction>
+    <Transaction>2025/04/27 01:24:17.000.418,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Main.dfm=C:\Users\steffz\Desktop\RavenLoader\RavenLoader (SRC)\Main.dfm</Transaction>
+    <Transaction>2025/04/27 01:24:17.000.418,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\Main.pas=C:\Users\steffz\Desktop\RavenLoader\RavenLoader (SRC)\Main.pas</Transaction>
+    <Transaction>2025/04/27 01:25:15.000.601,C:\Users\steffz\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj=C:\Users\steffz\Desktop\RavenLoader\RavenLoader (SRC)\LoaderMain.dproj</Transaction>
+    <Transaction>2025/06/28 00:24:37.574,=C:\Users\Meret\Desktop\RavenLoader\RavenLoader (SRC)\Unit5.pas</Transaction>
+  </Transactions>
+</BorlandProject>

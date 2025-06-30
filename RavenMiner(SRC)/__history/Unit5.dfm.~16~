@@ -1,0 +1,592 @@
+object RunExecute: TRunExecute
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  AlphaBlendValue = 250
+  BorderStyle = bsNone
+  Caption = 'Mining Control'
+  ClientHeight = 400
+  ClientWidth = 500
+  Color = 2428680
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  TextHeight = 15
+  object LabelStatus: TLabel
+    Left = 10
+    Top = 225
+    Width = 119
+    Height = 15
+    Caption = 'Status: Not Connected'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14968160
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object LabelHashrate: TLabel
+    Left = 10
+    Top = 250
+    Width = 107
+    Height = 15
+    Caption = 'Hashrate: 0.00 MH/s'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14968160
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object scGPPanel9: TscGPPanel
+    Left = 0
+    Top = 0
+    Width = 500
+    Height = 25
+    FluentUIOpaque = False
+    TabOrder = 0
+    BlurBackground = False
+    BlurBackgroundAmount = 5
+    BackgroundStyle = gppbsColor
+    ContentMarginLeft = 0
+    ContentMarginRight = 0
+    ContentMarginTop = 0
+    ContentMarginBottom = 0
+    CustomImageIndex = -1
+    DragForm = True
+    DragTopForm = True
+    DrawTextMode = scdtmGDI
+    FillGradientAngle = 90
+    FillGradientBeginAlpha = 255
+    FillGradientEndAlpha = 255
+    FillGradientBeginColorOffset = 25
+    FillGradientEndColorOffset = 25
+    FrameWidth = 1
+    FillColor = 2428680
+    FillColorAlpha = 255
+    FillColor2 = 2428680
+    FrameColor = 5189155
+    FrameColorAlpha = 255
+    FrameRadius = 0
+    ShowCaption = False
+    CaptionGlowEffect.Enabled = False
+    CaptionGlowEffect.Color = clBtnShadow
+    CaptionGlowEffect.AlphaValue = 255
+    CaptionGlowEffect.GlowSize = 7
+    CaptionGlowEffect.Offset = 0
+    CaptionGlowEffect.Intensive = True
+    CaptionGlowEffect.StyleColors = True
+    Color = clBtnFace
+    Caption = 'scGPPanel2'
+    TransparentBackground = True
+    StorePaintBuffer = True
+    Sizeable = False
+    WallpaperIndex = -1
+    WordWrap = False
+    object Label1: TLabel
+      Left = 3
+      Top = 4
+      Width = 42
+      Height = 16
+      Caption = 'Client'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 13017238
+      Font.Height = -12
+      Font.Name = 'JetBrains Mono'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 485
+      Top = 4
+      Width = 7
+      Height = 16
+      Caption = 'X'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 13017238
+      Font.Height = -12
+      Font.Name = 'JetBrains Mono'
+      Font.Style = []
+      ParentFont = False
+      OnClick = Label2Click
+    end
+  end
+  object scGPButton9: TscGPButton
+    Left = 10
+    Top = 360
+    Width = 120
+    Height = 30
+    FluentUIOpaque = False
+    TabOrder = 1
+    TabStop = True
+    OnClick = scGPButton9Click
+    Animation = True
+    Badge.Color = clRed
+    Badge.ColorAlpha = 255
+    Badge.Font.Charset = DEFAULT_CHARSET
+    Badge.Font.Color = clWhite
+    Badge.Font.Height = -11
+    Badge.Font.Name = 'Tahoma'
+    Badge.Font.Style = [fsBold]
+    Badge.Visible = False
+    Caption = 'Upload & Execute'
+    CaptionCenterAlignment = False
+    CanFocused = True
+    CustomDropDown = False
+    DrawTextMode = scdtmGDI
+    Margin = -1
+    Spacing = 1
+    Layout = blGlyphLeft
+    Images = VirtualImageList1
+    ImageIndex = 0
+    ImageMargin = 1
+    TransparentBackground = True
+    Options.NormalColor = 2428680
+    Options.HotColor = 3479824
+    Options.PressedColor = 2428680
+    Options.FocusedColor = 2428680
+    Options.DisabledColor = 2428680
+    Options.NormalColor2 = 2428680
+    Options.HotColor2 = 3479824
+    Options.PressedColor2 = 2428680
+    Options.FocusedColor2 = clNone
+    Options.DisabledColor2 = clNone
+    Options.NormalColorAlpha = 255
+    Options.HotColorAlpha = 255
+    Options.PressedColorAlpha = 255
+    Options.FocusedColorAlpha = 255
+    Options.DisabledColorAlpha = 255
+    Options.NormalColor2Alpha = 255
+    Options.HotColor2Alpha = 255
+    Options.PressedColor2Alpha = 255
+    Options.FocusedColor2Alpha = 255
+    Options.DisabledColor2Alpha = 255
+    Options.FrameNormalColor = 4599078
+    Options.FrameHotColor = 4599078
+    Options.FramePressedColor = 4599078
+    Options.FrameFocusedColor = 4599078
+    Options.FrameDisabledColor = 14968160
+    Options.FrameWidth = 1
+    Options.FrameNormalColorAlpha = 255
+    Options.FrameHotColorAlpha = 255
+    Options.FramePressedColorAlpha = 255
+    Options.FrameFocusedColorAlpha = 255
+    Options.FrameDisabledColorAlpha = 255
+    Options.FontNormalColor = 14968160
+    Options.FontHotColor = 14968160
+    Options.FontPressedColor = 14968160
+    Options.FontFocusedColor = 14968160
+    Options.FontDisabledColor = 14968160
+    Options.ShapeFillGradientAngle = 90
+    Options.ShapeFillGradientPressedAngle = -90
+    Options.ShapeFillGradientColorOffset = 25
+    Options.ShapeCornerRadius = 10
+    Options.ShapeStyle = scgpRect
+    Options.ShapeStyleLineSize = 0
+    Options.ArrowSize = 9
+    Options.ArrowAreaSize = 0
+    Options.ArrowType = scgpatDefault
+    Options.ArrowThickness = 2
+    Options.ArrowThicknessScaled = False
+    Options.ArrowNormalColor = 2428680
+    Options.ArrowHotColor = clBtnText
+    Options.ArrowPressedColor = clBtnText
+    Options.ArrowFocusedColor = clBtnText
+    Options.ArrowDisabledColor = clBtnText
+    Options.ArrowNormalColorAlpha = 200
+    Options.ArrowHotColorAlpha = 255
+    Options.ArrowPressedColorAlpha = 255
+    Options.ArrowFocusedColorAlpha = 200
+    Options.ArrowDisabledColorAlpha = 125
+    Options.StyleColors = True
+    Options.PressedHotColors = False
+    HotImageIndex = -1
+    FluentLightEffect = False
+    FocusedImageIndex = -1
+    PressedImageIndex = -1
+    UseGalleryMenuImage = False
+    UseGalleryMenuCaption = False
+    ScaleMarginAndSpacing = False
+    WidthWithCaption = 0
+    WidthWithoutCaption = 0
+    SplitButton = False
+    RepeatClick = False
+    RepeatClickInterval = 100
+    GlowEffect.Enabled = False
+    GlowEffect.Color = clHighlight
+    GlowEffect.AlphaValue = 255
+    GlowEffect.GlowSize = 7
+    GlowEffect.Offset = 0
+    GlowEffect.Intensive = True
+    GlowEffect.StyleColors = True
+    GlowEffect.HotColor = clNone
+    GlowEffect.PressedColor = clNone
+    GlowEffect.FocusedColor = clNone
+    GlowEffect.PressedGlowSize = 7
+    GlowEffect.PressedAlphaValue = 255
+    GlowEffect.States = [scsHot, scsPressed, scsFocused]
+    ImageGlow = True
+    ShowGalleryMenuFromTop = False
+    ShowGalleryMenuFromRight = False
+    ShowMenuArrow = True
+    ShowFocusRect = True
+    Down = False
+    GroupIndex = 0
+    AllowAllUp = False
+    ToggleMode = False
+  end
+  object GroupBoxMining: TGroupBox
+    Left = 10
+    Top = 35
+    Width = 240
+    Height = 180
+    Caption = ' Mining Settings '
+    Color = 2428680
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14968160
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 2
+    object LabelPool: TLabel
+      Left = 10
+      Top = 20
+      Width = 27
+      Height = 15
+      Caption = 'Pool:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelWallet: TLabel
+      Left = 10
+      Top = 50
+      Width = 36
+      Height = 15
+      Caption = 'Wallet:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelWorker: TLabel
+      Left = 10
+      Top = 80
+      Width = 41
+      Height = 15
+      Caption = 'Worker:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelIntensity: TLabel
+      Left = 10
+      Top = 110
+      Width = 48
+      Height = 15
+      Caption = 'Intensity:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object EditPool: TEdit
+      Left = 70
+      Top = 17
+      Width = 160
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object EditWallet: TEdit
+      Left = 70
+      Top = 47
+      Width = 160
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object EditWorker: TEdit
+      Left = 70
+      Top = 77
+      Width = 160
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object EditIntensity: TEdit
+      Left = 70
+      Top = 107
+      Width = 160
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
+    object ButtonStartMining: TButton
+      Left = 10
+      Top = 140
+      Width = 70
+      Height = 25
+      Caption = 'Start Mining'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+    object ButtonStopMining: TButton
+      Left = 85
+      Top = 140
+      Width = 70
+      Height = 25
+      Caption = 'Stop Mining'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+    end
+    object ButtonGetStatus: TButton
+      Left = 160
+      Top = 140
+      Width = 70
+      Height = 25
+      Caption = 'Get Status'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+    end
+  end
+  object GroupBoxGPU: TGroupBox
+    Left = 260
+    Top = 35
+    Width = 230
+    Height = 180
+    Caption = ' GPU Settings '
+    Color = 2428680
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14968160
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 3
+    object LabelCore: TLabel
+      Left = 10
+      Top = 20
+      Width = 63
+      Height = 15
+      Caption = 'Core Offset:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelMemory: TLabel
+      Left = 10
+      Top = 50
+      Width = 83
+      Height = 15
+      Caption = 'Memory Offset:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LabelPower: TLabel
+      Left = 10
+      Top = 80
+      Width = 66
+      Height = 15
+      Caption = 'Power Limit:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object EditCoreOffset: TEdit
+      Left = 100
+      Top = 17
+      Width = 120
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object EditMemoryOffset: TEdit
+      Left = 100
+      Top = 47
+      Width = 120
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object EditPowerLimit: TEdit
+      Left = 100
+      Top = 77
+      Width = 120
+      Height = 23
+      Color = 3479824
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14968160
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object ButtonSetGPU: TButton
+      Left = 10
+      Top = 110
+      Width = 100
+      Height = 25
+      Caption = 'Apply GPU Settings'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
+    object ButtonOptimizeRTX: TButton
+      Left = 120
+      Top = 110
+      Width = 100
+      Height = 25
+      Caption = 'Optimize RTX 3060'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+    object ButtonReset: TButton
+      Left = 10
+      Top = 140
+      Width = 100
+      Height = 25
+      Caption = 'Reset Settings'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+    end
+  end
+  object ImageCollection1: TImageCollection
+    Images = <
+      item
+        Name = 'send_letter_24px'
+        SourceImages = <
+          item
+            Image.Data = {
+              89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+              F800000006624B474400FF00FF00FFA0BDA7930000023549444154480DDD95BF
+              4B5B5114C7CFD3D8CC05910A56A5FF80121C3A54DA459A08820E82FF4877E78A
+              8DBAB55397428716EDD4B5B58A43D4E822286220148B2808DD029AE7E7FBDE0B
+              DEFB92A8B42EAD7C3FE7DC7BCEB9E7BE1FD717B37FFD2FB8E906C230CC929F86
+              29188687209D63CAB00C9F8220A8E15BAAED063457E3D7AC1A34B353F8015590
+              0630A3D00D1578C5269FF1B78BC6195804A98CC943477A25B14E28C02E48454C
+              67BAAE694ED112486F3099A682544035B000D25C2AED4FA99801E9E6427F5934
+              63912EA88E9F88026943220B95300C4BD074ABC4BA611DD640CFDE6B414C8FAC
+              8C3F802E2FA909C1C6D5BFD4DC85DC63D8838B048DFBDC1A8DC98D83A403A2D0
+              35443FC22FF05E28F32150FC0CBF95A0B16243D71DCCC8E92E4EF01F1A71B759
+              8EE0378E5B1DEFEA0B133DB23CFE7782C63A00CA118AC5DA4B46DF2107915414
+              0D30BDF013D29A35B30D16EF73650CCD186F327EC6E429A45525A00BC0996522
+              1B9B2076BEA5D97B6BF1477C9FB0C0B55787933A66DC077FAB7E1AA817CECCDD
+              609BC80B6EDD8D11BABB58AB77F59C155B10C96DB642E4118CC19F4A47BC87C5
+              EA8573C4EE0FE010F40275254E361E927B076FE3996F89EB8896F107D0E56793
+              19894990EEFF5391EC61749F0749DF16F794354A3C4F61061640BAFDC2A8D2AD
+              2EE2A51D4C1EDC77156D404C7505FC2E48454CD3A36D79F6D581627D4F1A3F38
+              67C456A10AD2006614F4D1ABE0DBFEE0B4DD80457A5C59FC141460049E807484
+              29C15758E19FAE86FF4F75053A48A2F98755313E0000000049454E44AE426082}
+          end>
+      end>
+    Left = 450
+    Top = 360
+  end
+  object VirtualImageList1: TVirtualImageList
+    Images = <
+      item
+        CollectionIndex = 0
+        CollectionName = 'send_letter_24px'
+        Name = 'send_letter_24px'
+      end>
+    ImageCollection = ImageCollection1
+    Left = 450
+    Top = 360
+  end
+end

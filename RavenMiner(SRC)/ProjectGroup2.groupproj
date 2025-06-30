@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{454E4BD4-2A97-4B9A-95BD-ED75B32255DB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\..\..\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RavenOriginalStub.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="LoaderMain">
+        <MSBuild Projects="..\..\..\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj"/>
+    </Target>
+    <Target Name="LoaderMain:Clean">
+        <MSBuild Projects="..\..\..\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LoaderMain:Make">
+        <MSBuild Projects="..\..\..\Documents\Embarcadero\Studio\Projects\LoaderMain.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RavenOriginalStub">
+        <MSBuild Projects="RavenOriginalStub.dproj"/>
+    </Target>
+    <Target Name="RavenOriginalStub:Clean">
+        <MSBuild Projects="RavenOriginalStub.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RavenOriginalStub:Make">
+        <MSBuild Projects="RavenOriginalStub.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="LoaderMain;RavenOriginalStub"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="LoaderMain:Clean;RavenOriginalStub:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="LoaderMain:Make;RavenOriginalStub:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

