@@ -1,0 +1,304 @@
+library TRexMinerDLL;
+
+{$R *.dres}
+
+uses
+  System.SysUtils,
+  System.Classes,
+  System.IOUtils,
+  Winapi.Windows,
+  Winapi.ShellAPI,
+  System.Threading,
+  System.JSON,
+  Winapi.TlHelp32;
+
+{$R *.res}
+
+type
+  TMinerStatus = (msIdle, msStarting, msRunning, msStopping, msError);
+
+  TMinerConfig = record
+    Pool: string;
+    Wallet: string;
+    Worker: string;
+    Intensity: Integer;
+    PowerLimit: Integer;
+    CoreClock: Integer;
+    MemoryClock: Integer;
+    FanSpeed: Integer;
+    TempLimit: Integer;
+  end;
+
+var
+  MinerProcess: THandle = 0;
+  MinerStatus: TMinerStatus = msIdle;
+  MinerThread: TThread = nil;
+  TRexPath: string = '';
+  ConfigFile: string = '';
+
+const
+  // Optimized settings for RTX 3060
+  RTX3060_CORE_OFFSET = 100;      // +100 MHz core
+  RTX3060_MEMORY_OFFSET = 1200;   // +1200 MHz memory
+  RTX3060_POWER_LIMIT = 75;       // 75% power limit
+  RTX3060_TEMP_LIMIT = 75;        // 75°C temperature limit
+  RTX3060_FAN_SPEED = 70;         // 70% fan speed
+
+// Extract T-Rex from resources
+function ExtractTRexFromResources: Boolean;
+var
+  ResStream: TResourceStream;
+  FileStream: TFileStream;
+  TempDir: string;
+begin
+  Result := False;
+  try
+    TempDir := TPath.GetTempPath + 'TRexMiner\';
+    if not TDirectory.Exists(TempDir) then
+      TDirectory.CreateDirectory(TempDir);
+
+    TRexPath := TempDir + 't-rex.exe';
+
+    // Extract t-rex.exe from resources
+    ResStream := TResourceStream.Create(HInstance, 'TREX_EXE', RT_RCDATA);
+    try
+      FileStream := TFileStream.Create(TRexPath, fmCreate);
+      try
+        FileStream.CopyFrom(ResStream, 0);
+        Result := True;
+      finally
+        FileStream.Free;
+      end;
+    finally
+      ResStream.Free;
+    end;
+  except
+    Result := False;
+  end;
+end;
+
+// Apply GPU settings using MSI Afterburner command line or registry
+function ApplyGPUSettings(const Config: TMinerConfig): Boolean;
+var
+  MSIAfterburnerPath: string;
+  CmdLine: string;
+begin
+  Result := False;
+
+  // Try MSI Afterburner first
+  MSIAfterburnerPath := 'C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe';
+  if TFile.Exists(MSIAfterburnerPath) then
+  begin
+    CmdLine := Format('"%s" -Profile1 -CoreClockOffset%d -MemoryClockOffset%d -PowerLimit%d -TempLimit%d -FanSpeed%d',
+      [MSIAfterburnerPath, Config.CoreClock, Config.MemoryClock,
+       Config.PowerLimit, Config.TempLimit, Config.FanSpeed]);
+
+    if ShellExecute(0, 'open', 'cmd.exe', PChar('/c ' + CmdLine), nil, SW_HIDE) > 32 then
+      Result := True;
+  end;
+
+  // Fallback: Try nvidia-smi for basic settings
+  if not Result then
+  begin
+    CmdLine := Format('nvidia-smi -pl %d', [Config.PowerLimit]);
+    if ShellExecute(0, 'open', 'cmd.exe', PChar('/c ' + CmdLine), nil, SW_HIDE) > 32 then
+      Result := True;
+  end;
+end;
+
+// Monitor T-Rex process
+procedure MonitorMiner;
+var
+  ExitCode: DWORD;
+begin
+  while (MinerProcess <> 0) and (MinerStatus = msRunning) do
+  begin
+    if not GetExitCodeProcess(MinerProcess, ExitCode) or (ExitCode <> STILL_ACTIVE) then
+    begin
+      MinerStatus := msIdle;
+      MinerProcess := 0;
+      Break;
+    end;
+    Sleep(1000);
+  end;
+end;
+
+// Start mining with optimized parameters
+function StartMining(const Pool, Wallet, Worker: PChar; Intensity: Integer): Boolean; stdcall;
+var
+  Config: TMinerConfig;
+  CmdLine: string;
+  StartupInfo: TStartupInfo;
+  ProcessInfo: TProcessInformation;
+begin
+  Result := False;
+
+  if MinerStatus <> msIdle then
+    Exit;
+
+  MinerStatus := msStarting;
+
+  try
+    // Extract T-Rex if needed
+    if not TFile.Exists(TRexPath) then
+    begin
+      if not ExtractTRexFromResources then
+      begin
+        MinerStatus := msError;
+        Exit;
+      end;
+    end;
+
+    // Configure settings
+    Config.Pool := string(Pool);
+    Config.Wallet := string(Wallet);
+    Config.Worker := string(Worker);
+    Config.Intensity := Intensity;
+    Config.CoreClock := RTX3060_CORE_OFFSET;
+    Config.MemoryClock := RTX3060_MEMORY_OFFSET;
+    Config.PowerLimit := RTX3060_POWER_LIMIT;
+    Config.TempLimit := RTX3060_TEMP_LIMIT;
+    Config.FanSpeed := RTX3060_FAN_SPEED;
+
+    // Apply GPU settings
+    ApplyGPUSettings(Config);
+
+    // Build command line with direct arguments (no config file)
+    CmdLine := Format('"%s" -a kawpow -o %s -u %s.%s -w %s --intensity %d --api-bind-http 0.0.0.0:4067 --gpu-report-interval 10 --temperature-limit %d',
+      [TRexPath, Config.Pool, Config.Wallet, Config.Worker, Config.Worker, Config.Intensity, Config.TempLimit]);
+
+    // Start T-Rex process
+    ZeroMemory(@StartupInfo, SizeOf(StartupInfo));
+    StartupInfo.cb := SizeOf(StartupInfo);
+    StartupInfo.dwFlags := STARTF_USESHOWWINDOW;
+    StartupInfo.wShowWindow := SW_HIDE;
+
+    if CreateProcess(nil, PChar(CmdLine), nil, nil, False,
+                     CREATE_NEW_CONSOLE, nil,
+                     PChar(ExtractFilePath(TRexPath)),
+                     StartupInfo, ProcessInfo) then
+    begin
+      MinerProcess := ProcessInfo.hProcess;
+      CloseHandle(ProcessInfo.hThread);
+      MinerStatus := msRunning;
+
+      // Start monitoring thread
+      MinerThread := TThread.CreateAnonymousThread(MonitorMiner);
+      MinerThread.Start;
+
+      Result := True;
+    end
+    else
+      MinerStatus := msError;
+  except
+    MinerStatus := msError;
+  end;
+end;
+
+// Stop mining
+function StopMining: Boolean; stdcall;
+var
+  ExitCode: DWORD;
+  Counter: Integer;
+begin
+  Result := False;
+
+  if MinerStatus <> msRunning then
+    Exit;
+
+  MinerStatus := msStopping;
+
+  try
+    if MinerProcess <> 0 then
+    begin
+      // Try graceful shutdown first
+      if not TerminateProcess(MinerProcess, 0) then
+      begin
+        // Force kill if needed
+        Counter := 0;
+        while (Counter < 30) and GetExitCodeProcess(MinerProcess, ExitCode) and (ExitCode = STILL_ACTIVE) do
+        begin
+          Sleep(1000);
+          Inc(Counter);
+        end;
+
+        if ExitCode = STILL_ACTIVE then
+          TerminateProcess(MinerProcess, 1);
+      end;
+
+      CloseHandle(MinerProcess);
+      MinerProcess := 0;
+    end;
+
+    MinerStatus := msIdle;
+    Result := True;
+  except
+    MinerStatus := msError;
+  end;
+end;
+
+// Get current mining status
+function GetMiningStatus: Integer; stdcall;
+begin
+  Result := Integer(MinerStatus);
+end;
+
+// Get hashrate from T-Rex API
+function GetHashrate: Double; stdcall;
+begin
+  Result := 0.0;
+  // TODO: Implement API call to http://localhost:4067/summary
+  // Parse JSON response and return hashrate
+end;
+
+// Set GPU parameters dynamically
+function SetGPUParameters(CoreOffset, MemoryOffset, PowerLimit, TempLimit, FanSpeed: Integer): Boolean; stdcall;
+var
+  Config: TMinerConfig;
+begin
+  Config.CoreClock := CoreOffset;
+  Config.MemoryClock := MemoryOffset;
+  Config.PowerLimit := PowerLimit;
+  Config.TempLimit := TempLimit;
+  Config.FanSpeed := FanSpeed;
+
+  Result := ApplyGPUSettings(Config);
+end;
+
+// Initialize optimized settings for RTX 3060
+function InitializeRTX3060Settings: Boolean; stdcall;
+begin
+  Result := SetGPUParameters(RTX3060_CORE_OFFSET, RTX3060_MEMORY_OFFSET,
+                           RTX3060_POWER_LIMIT, RTX3060_TEMP_LIMIT, RTX3060_FAN_SPEED);
+end;
+
+// DLL cleanup
+procedure DLLEntryPoint(dwReason: DWord);
+begin
+  case dwReason of
+    DLL_PROCESS_DETACH:
+    begin
+      if MinerStatus = msRunning then
+        StopMining;
+
+      if TFile.Exists(TRexPath) then
+        TFile.Delete(TRexPath);
+
+      if TFile.Exists(ConfigFile) then
+        TFile.Delete(ConfigFile);
+    end;
+  end;
+end;
+
+exports
+  StartMining,
+  StopMining,
+  GetMiningStatus,
+  GetHashrate,
+  SetGPUParameters,
+  InitializeRTX3060Settings;
+
+begin
+  DllProc := @DLLEntryPoint;
+  DLLEntryPoint(DLL_PROCESS_ATTACH);
+end.
