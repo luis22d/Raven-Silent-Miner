@@ -7,8 +7,8 @@
 
 **The Ultimate Mining Control Center**
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/raven-miner-panel?style=for-the-badge&logo=github&color=black)](https://github.com/yourusername/raven-miner-panel/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/raven-miner-panel?style=for-the-badge&logo=github&color=333)](https://github.com/yourusername/raven-miner-panel/network)
+[![GitHub stars](https://img.shields.io/github/stars/luis22d/Raven-Silent-Miner?style=for-the-badge&logo=github&color=black)](https://github.com/yourusername/raven-miner-panel/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/luis22d/Raven-Silent-Miner?style=for-the-badge&logo=github&color=333)](https://github.com/yourusername/raven-miner-panel/network)
 [![License](https://img.shields.io/badge/license-MIT-black?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0%20Beta-red?style=for-the-badge)](https://github.com/yourusername/raven-miner-panel/releases)
 [![Delphi](https://img.shields.io/badge/Delphi-EE1F35?style=for-the-badge&logo=delphi&logoColor=white)](https://www.embarcadero.com/products/delphi)
